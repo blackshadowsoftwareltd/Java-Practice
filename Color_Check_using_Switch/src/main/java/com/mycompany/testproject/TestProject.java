@@ -6,10 +6,16 @@ public class TestProject {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a number: ");
-        String input = scanner.next();
+        String input = scanner.nextLine();
         scanner.close();
-        int number = Integer.parseInt(input, 8);
-        System.out.println("You entered: " + number);
+
+        int number = 0;
+        if (input.startsWith("0")) {
+            number = Integer.parseInt(input, 8); // Parse as octal number
+        } else {
+            number = Integer.parseInt(input);
+        }
+        System.out.println("You entered: ");
         switch (number) {
             case 100:
                 System.out.println("Red");
