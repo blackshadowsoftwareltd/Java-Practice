@@ -9,12 +9,8 @@ public class TestProject {
         String input = scanner.nextLine();
         scanner.close();
 
-        int number = 0;
-        if (input.startsWith("0")) {
-            number = Integer.parseInt(input, 8); // Parse as octal number
-        } else {
-            number = Integer.parseInt(input);
-        }
+        int number = input.startsWith("0") ? Integer.parseInt(input, 8) : Integer.parseInt(input);
+
         System.out.println("You entered: ");
         switch (number) {
             case 100:
