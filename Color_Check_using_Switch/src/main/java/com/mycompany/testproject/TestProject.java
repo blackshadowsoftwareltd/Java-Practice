@@ -1,12 +1,14 @@
 package com.mycompany.testproject;
+
 import java.util.Scanner;
 
 public class TestProject {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a number: ");
-        int number = scanner.nextInt();
+        System.out.print("Enter a number: ");
+        String input = scanner.next();
         scanner.close();
+        int number = Integer.parseInt(input, 8);
         System.out.println("You entered: " + number);
         switch (number) {
             case 100:
@@ -37,5 +39,6 @@ public class TestProject {
                 System.out.println("Invalid number");
                 break;
         }
+
     }
 }
