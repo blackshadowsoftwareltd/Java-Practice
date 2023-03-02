@@ -2,7 +2,10 @@ package com.mycompany.testproject;
 
 public class TestProject {
     public static void main(String[] args) {
-        PrimeNumber p = new PrimeNumber();
-        p.primeNumber();
+        // PrimeNumber p = new PrimeNumber();
+        // p.primeNumber();
+
+        Fibonacci f = new Fibonacci();
+        f.fibonacci();
     }
 }
