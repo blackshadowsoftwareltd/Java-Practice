@@ -5,7 +5,10 @@ public class TestProject {
         // PrimeNumber p = new PrimeNumber();
         // p.primeNumber();
 
-        Fibonacci f = new Fibonacci();
-        f.fibonacci();
+        // Fibonacci f = new Fibonacci();
+        // f.fibonacci();
+
+        Factorial fact = new Factorial();
+        fact.factorial();
     }
 }
