@@ -8,7 +8,10 @@ public class TestProject {
         // Fibonacci f = new Fibonacci();
         // f.fibonacci();
 
-        Factorial fact = new Factorial();
-        fact.factorial();
+        // Factorial fact = new Factorial();
+        // fact.factorial();
+
+        Searching searching = new Searching();
+        searching.search();
     }
 }
