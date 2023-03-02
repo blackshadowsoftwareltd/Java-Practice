@@ -11,7 +11,11 @@ public class TestProject {
         // Factorial fact = new Factorial();
         // fact.factorial();
 
-        Searching searching = new Searching();
-        searching.search();
+        // Searching searching = new Searching();
+        // searching.search();
+
+        Sorting sorting = new Sorting();
+        sorting.sort();
+    
     }
 }
