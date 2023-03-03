@@ -12,6 +12,7 @@ public class Employee {
     }
 
     void showDetails() {
+
         System.out.println("Name: " + name + " Age: " + age + " Salery: " + salery);
     }
 

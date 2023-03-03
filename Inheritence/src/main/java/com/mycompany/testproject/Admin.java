@@ -1,13 +1,22 @@
 package com.mycompany.testproject;
 
-public class Admin extends Employee {
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-    public Admin(String name, double salery) {
+public class Admin extends Employee {
+    LocalDateTime startTime, endTime;
+
+    public Admin(String name, double salery, LocalDateTime startTime, LocalDateTime endTime) {
         super(name, 0, salery);
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     void showDetails() {
-        System.out.println("Name: " + name + " Salery: " + salery);
+        super.showDetails();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println("Start time: " + startTime.format(formatter) + " End time: " + endTime.format(formatter));
     }
 
 }
