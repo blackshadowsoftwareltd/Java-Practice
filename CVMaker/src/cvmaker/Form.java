@@ -1,8 +1,4 @@
- 
 package cvmaker;
-
-
-
 
 import java.awt.*;
 import java.io.File;
@@ -11,18 +7,15 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
-
-
-
-
+import javax.swing.filechooser.FileSystemView;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 public class Form extends javax.swing.JFrame {
 
-    
     public Form() {
         initComponents();
     }
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -510,11 +503,9 @@ public class Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void generate_pdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generate_pdfActionPerformed
-     //? button
-     
-     
-        
-          try {
+        //? button
+
+        try {
             // Create a new PDF document
             PDDocument document = new PDDocument();
 
@@ -525,18 +516,18 @@ public class Form extends javax.swing.JFrame {
             // Create a content stream for the page
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-                Font systemFont = Font.getFont(Font.SANS_SERIF);
+            Font systemFont = Font.getFont(Font.SANS_SERIF);
 
             // Set the font name with a fallback option
-            String fontName = (systemFont != null) ? systemFont.getName() : "Helvetica";
+            String fontName =  "RedHatMono-VariableFont_wght";
 
             // Set the font
-            PDType0Font font = PDType0Font.load(document, new File(fontName));
+            PDType0Font font = PDType0Font.load(document, new File("/home/remon/Java/Java-Practice/CVMaker/src/red_hat_mono/RedHatMono-VariableFont_wght.ttf"));
             contentStream.setFont(font, 12);
-            
-            
-            
-            
+
+      
+
+
             // Write text to the page
             contentStream.beginText();
             contentStream.newLineAtOffset(100, 700);
@@ -545,29 +536,23 @@ public class Form extends javax.swing.JFrame {
 
             // Close the content stream
             contentStream.close();
+ 
+
+       
 
             // Save the document
-            document.save(new File("example.pdf"));
+            document.save(new File( "/home/remon/Downloads/example.pdf"));
 
             // Close the document
             document.close();
 
             System.out.println("PDF created successfully.");
         } catch (IOException e) {
-            
-            
-           System.out.println("Catch : "+e.toString());
-        }    
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     //? button
+
+            System.out.println("Catch : " + e.toString());
+        }
+
+        //? button
     }//GEN-LAST:event_generate_pdfActionPerformed
 
     private void school_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_school_nameActionPerformed
@@ -609,7 +594,7 @@ public class Form extends javax.swing.JFrame {
     private void designation4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_designation4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_designation4ActionPerformed
-   
+
     /**
      * @param args the command line arguments
      */
