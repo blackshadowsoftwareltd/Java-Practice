@@ -5,6 +5,7 @@
 package algorithms;
 
 import merge_sort.MergeSort;
+import quick_sort.QuickSort;
 
 /**
  *
@@ -18,6 +19,8 @@ public class Algorithms {
     public static void main(String[] args) {
         MergeSort mergeSort=new MergeSort();
         mergeSort.startMergeSort();
+        QuickSort quickSort=new QuickSort();
+        quickSort.startQuickSort();
     }
     
 }

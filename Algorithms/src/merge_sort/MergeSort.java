@@ -10,6 +10,7 @@ package merge_sort;
  */
 public class MergeSort {
     public void startMergeSort() {
+        System.out.println("\nMerge Sort");
         int[] list = { 3, 5, 7, 4, 6, 1, 8, 9, 2 };
         devide(list, 0, list.length - 1);
         for (int i = 0; i < list.length; i++) {
