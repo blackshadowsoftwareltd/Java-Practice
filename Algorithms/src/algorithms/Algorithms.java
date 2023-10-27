@@ -4,8 +4,7 @@
  */
 package algorithms;
 
-import merge_sort.MergeSort;
-import quick_sort.QuickSort;
+import dfs.DFS;
 
 /**
  *
@@ -17,10 +16,12 @@ public class Algorithms {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MergeSort mergeSort=new MergeSort();
-        mergeSort.startMergeSort();
-        QuickSort quickSort=new QuickSort();
-        quickSort.startQuickSort();
+        // MergeSort mergeSort=new MergeSort();
+        // mergeSort.startMergeSort();
+        // QuickSort quickSort=new QuickSort();
+        // quickSort.startQuickSort();
+        DFS dfs = new DFS();
+        dfs.startDFS();
     }
-    
+
 }
