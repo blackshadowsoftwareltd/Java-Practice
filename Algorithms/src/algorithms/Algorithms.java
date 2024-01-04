@@ -101,40 +101,78 @@ import java.util.*;
 
 import java.util.Scanner;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
 public class Algorithms {
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
 
-    while (scanner.hasNext()) {
-      String s1 = scanner.nextLine();
-      String s2 = scanner.nextLine();
+    while (true) {
+      int n = scanner.nextInt();
+      int m = scanner.nextInt();
 
-      int result = longestCommonSubsequence(s1, s2);
-      System.out.println(result);
+      if (n == 0 && m == 0) {
+        break;
+      }
+
+      int[] inDegree = new int[n + 1];
+      ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+
+      for (int i = 0; i <= n; i++) {
+        graph.add(new ArrayList<>());
+      }
+
+      for (int i = 0; i < m; i++) {
+        int u = scanner.nextInt();
+        int v = scanner.nextInt();
+        graph.get(u).add(v);
+        inDegree[v]++;
+      }
+
+      ArrayList<Integer> result = topologicalSort(graph, inDegree, n);
+      printResult(result);
+
     }
 
     scanner.close();
   }
 
-  static int longestCommonSubsequence(String s1, String s2) {
-    int m = s1.length();
-    int n = s2.length();
+  static ArrayList<Integer> topologicalSort(ArrayList<ArrayList<Integer>> graph, int[] inDegree, int n) {
+    ArrayList<Integer> result = new ArrayList<>();
+    Queue<Integer> queue = new LinkedList<>();
 
-    int[][] dp = new int[m + 1][n + 1];
+    for (int i = 1; i <= n; i++) {
+      if (inDegree[i] == 0) {
+        queue.add(i);
+      }
+    }
 
-    for (int i = 0; i <= m; i++) {
-      for (int j = 0; j <= n; j++) {
-        if (i == 0 || j == 0) {
-          dp[i][j] = 0;
-        } else if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
-          dp[i][j] = dp[i - 1][j - 1] + 1;
-        } else {
-          dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+    while (!queue.isEmpty()) {
+      int u = queue.poll();
+      result.add(u);
+
+      for (int v : graph.get(u)) {
+        inDegree[v]--;
+        if (inDegree[v] == 0) {
+          queue.add(v);
         }
       }
     }
 
-    return dp[m][n];
+    return result;
+  }
+
+  static void printResult(ArrayList<Integer> result) {
+    for (int i = 0; i < result.size(); i++) {
+      System.out.print(result.get(i));
+      if (i < result.size() - 1) {
+        System.out.print(" ");
+      }
+    }
+    System.out.println();
   }
 }
