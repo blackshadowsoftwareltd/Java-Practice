@@ -94,38 +94,47 @@ import java.util.*;
 //       int numberOfSwap bublSort(arr);
 
 //       System.out.println("Minimum exchange operations: " + numberOfSwap);
+
 //     }
 //   }
 // }
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+
+import java.util.Scanner;
 
 public class Algorithms {
-  public static void main(String[] args) throws IOException {
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    while (true) {
-      int n = Integer.parseInt(br.readLine().trim());
-      if (n == 0) {
-        break;
-      }
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
 
-      int[] ages = new int[n];
-      StringTokenizer st = new StringTokenizer(br.readLine());
-      for (int i = 0; i < n; i++) {
-        ages[i] = Integer.parseInt(st.nextToken());
-      }
-      Arrays.sort(ages);
+    while (scanner.hasNext()) {
+      String s1 = scanner.nextLine();
+      String s2 = scanner.nextLine();
 
-      for (int i = 0; i < n; i++) {
-        System.out.print(ages[i] + " ");
-      }
-      System.out.println();
+      int result = longestCommonSubsequence(s1, s2);
+      System.out.println(result);
     }
 
-    br.close();
+    scanner.close();
+  }
+
+  static int longestCommonSubsequence(String s1, String s2) {
+    int m = s1.length();
+    int n = s2.length();
+
+    int[][] dp = new int[m + 1][n + 1];
+
+    for (int i = 0; i <= m; i++) {
+      for (int j = 0; j <= n; j++) {
+        if (i == 0 || j == 0) {
+          dp[i][j] = 0;
+        } else if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+          dp[i][j] = dp[i - 1][j - 1] + 1;
+        } else {
+          dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+        }
+      }
+    }
+
+    return dp[m][n];
   }
 }
